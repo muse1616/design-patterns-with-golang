@@ -30,9 +30,6 @@ type Displayment interface {
 
 //实现主题接口
 type WeatherData struct {
-	// 实现Subject
-
-	Subject
 	//	观察者列表
 	observers []Observer
 	//	数据
