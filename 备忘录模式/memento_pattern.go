@@ -26,24 +26,31 @@ func (o *Originator) setState(state string) {
 	o.state = state
 }
 
-//保存状态到备忘录
-func (o *Originator) saveStateToMemento() *Memento {
+//生成当前状态的备忘录
+func (o *Originator) generateTheMemento() *Memento {
 	return NewMemento(o.state)
 }
-func (o *Originator) getStateFromMemento(memento *Memento) {
+// 设置备忘录
+func (o *Originator) loadStateFromMemento(memento *Memento) {
 	o.state = memento.getState()
 }
 
+// 保存备忘录的结构体
 type CareTaker struct {
 	mementoList []*Memento
 }
 
+// Constructor
 func NewCareTaker() *CareTaker {
 	return &CareTaker{mementoList: make([]*Memento, 0)}
 }
+
+// 添加一条记录
 func (c *CareTaker) add(memento *Memento) {
 	c.mementoList = append(c.mementoList, memento)
 }
+
+// 读取记录
 func (c *CareTaker) get(index int) *Memento {
 	return c.mementoList[index]
 }
